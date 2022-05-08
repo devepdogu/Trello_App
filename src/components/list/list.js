@@ -85,7 +85,7 @@ export default function List() {
         })
     }
     const handleCloseNewCard = (e) => {
-        e.parent().parent().fadeOut(0);
+        e.parent().parent().fadeOut(0).find("textarea").val("");
         e.parent().parent().prev().slideDown(1)
     }
 
@@ -124,48 +124,43 @@ export default function List() {
 
     }
 
-    $(document).ready(() => {
-        $('textarea[data-auto-click=1]').attr("readonly", true)
-        $(document.body).on("input", 'textarea,input', function () {
-            $(this).attr("data-value", $(this).val())
-        })
+    $('div[data-auto-click=1]').on("click", function (e) {
+        $(this).find("textarea").removeAttr("data-disabled").focus()
 
-        $(document.body).on("click", 'button', function () {
-
-            if (typeof $(this).attr("data-clicked") === "string")
-                $(this).removeAttr("data-clicked")
-            else
-                $(this).attr("data-clicked", 1)
-        })
-        $('div[data-auto-click=1]').on("click", function (e) {
-            $(this).find("textarea").removeAttr("data-disabled").focus()
-
-        }).on('focusout', function () {
-            $(this).find("textarea").attr("data-disabled", 1)
-            if ($(this).find("textarea").attr("data-value") !== "")
-                setItems((prev) => {
-                    return prev.map((a) => {
-                        if (a.id === $(this).parents('.list__item').attr('data-rbd-draggable-id') && a.title !== $(this).find("textarea").attr("data-value"))
-                            a.title = $(this).find("textarea").attr("data-value")
-                        return a
-                    })
+    }).on('focusout', function () {
+        $(this).find("textarea").attr("data-disabled", 1)
+        if ($(this).find("textarea").attr("data-value") !== "")
+            setItems((prev) => {
+                return prev.map((a) => {
+                    if (a.id === $(this).parents('.list__item').attr('data-rbd-draggable-id') && a.title !== $(this).find("textarea").attr("data-value"))
+                        a.title = $(this).find("textarea").attr("data-value")
+                    return a
                 })
-            else
-                $(this).find("textarea").val(items.find((a) => a.id === $(this).parents('.list__item').attr('data-rbd-draggable-id'))?.title)
-        })
-
-        $('.list__card__body textarea').on('focusout', function () {
-            if ($(this).val() !== "") {
-                // handleAddInsertCard($(this).next().find('button'), $(this).parents('.list__item').attr('data-rbd-draggable-id'))
-            }
-        })
-
-
-
+            })
+        else
+            $(this).find("textarea").val(items.find((a) => a.id === $(this).parents('.list__item').attr('data-rbd-draggable-id'))?.title)
     })
 
 
 
+    $(document).click(function () {
+        let $this = this
+        $('.list__card__body').each(function (e) {
+            if ($(this).css('display') === "block" && $($($this)[0].activeElement).prop("tagName").toLowerCase() !== "textarea") {
+                console.log($($($this)[0].activeElement))
+                if ($(this).find("textarea").val() !== "" && !$($($this)[0].activeElement).hasClass('fa-xmark')) {
+                    handleAddInsertCard($(this).find('button'), $(this).parents('.list__item').attr('data-rbd-draggable-id'))
+                }
+                $(this).fadeOut(0).prev().fadeIn(0)
+            }
+        })
+
+
+        if ($('.new__list__body').css('display') === "block" && $($(this)[0].activeElement).prop("tagName").toLowerCase() !== "textarea") {
+            $('.new__list__body').fadeOut(0).prev().fadeIn(0)
+        }
+
+    })
     const onDragUpdate = (update, provided) => {
         if (typeof update?.destination?.index !== "undefined") {
             disableTextArea()

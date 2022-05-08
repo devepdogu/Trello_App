@@ -25,6 +25,7 @@ export default function CardHead({ _provided, _item, cart }) {
 
             $div.find('.list__card__title').fadeOut(0)
             $div.find('.list__card__set').fadeIn(0).removeAttr('hidden').find("textarea").focus()
+            $div.find('.list__card__set textarea').get(0).setSelectionRange($div.find('.list__card__set textarea').val().length,$div.find('.list__card__set textarea').val().length)
 
         }
     }
@@ -77,9 +78,9 @@ export default function CardHead({ _provided, _item, cart }) {
             <span className="list__card__title">
                 {_item.title}
             </span>
-            
+
             <div hidden className='list__card__set'>
-                <textarea defaultValue={_item.title}></textarea>
+                <textarea defaultValue={_item.title} data-auto-height={true} ></textarea>
                 <div>
                     <button className='btn__primary' onClick={saveCard}>Kaydet</button>
                     <i className="fa-solid fa-xmark" onClick={closeSetCard}></i>

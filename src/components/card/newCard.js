@@ -8,7 +8,7 @@ export default function NewCard({ handleCloseNewCard, handleNewCard, handleAddIn
                 <span>Kart ekle</span>
             </a>
             <div className='list__card__body'>
-                <textarea placeholder='Bu kart için başlık girin...' rows={2}></textarea>
+                <textarea placeholder='Bu kart için başlık girin...' rows={2} data-auto-height={true}></textarea>
                 <div>
                     <button className='btn__primary' onClick={(e) => handleAddInsertCard($(e.target), item.id)}>Kart Ekle</button>
                     <i onClick={(e) => handleCloseNewCard($(e.target))} className="fa-solid fa-xmark"></i>
