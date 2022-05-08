@@ -1,0 +1,282 @@
+@import "variable";
+.list__app__wrap {
+    display: flex;
+}
+.droppable__wrap {
+    display: flex;
+    padding: 20px 20px;
+    padding-right: 0px;
+    height: calc(100vh - 68px);
+    overflow-x: scroll;
+    gap: 10px;
+}
+.focusLoseInput {
+    position: absolute;
+    z-index: -9999999999;
+    top: -500%;
+    left: -500%;
+}
+.new__list {
+    max-width: $listWidth;
+    width: 100%;
+    min-width: $listWidth;
+    margin-right: 10px;
+    a {
+        width: 100%;
+        border-radius: 3px;
+        i {
+            margin-right: 5px;
+        }
+        font-size: 14px;
+        padding: 10px 15px;
+        background-color: #ffffff3d;
+        cursor: pointer;
+        color: white;
+        display: flex;
+        align-items: center;
+        &:hover {
+            background-color: #ffffff52;
+        }
+    }
+    .new__list__body {
+        width: 100%;
+        background-color: #ebecf0;
+        border-radius: 3px;
+        height: auto;
+        min-height: 32px;
+        padding: 4px;
+        display: none;
+
+        & > div {
+            display: flex;
+            align-items: center;
+            i {
+                margin-left: 10px;
+                font-size: 1.4rem;
+                cursor: pointer;
+                color: #42526e;
+            }
+        }
+        textarea {
+            @include reset-input;
+            box-shadow: inset 0 0 0 2px #0079bf !important;
+            border-radius: 3px;
+            height: auto;
+            width: 100%;
+            padding: 7.5px 15px;
+            font-weight: 400;
+        }
+    }
+}
+.list__item__wrapper {
+    height: 100%;
+    width: $listWidth;
+    position: relative;
+    .list__item {
+        background-color: #ebecf0;
+        border-radius: 3px;
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+        position: relative;
+        white-space: normal;
+        width: $listWidth !important;
+
+        .list__card__items {
+            padding: 10px 8px;
+            padding-top: 0px;
+            .__drop__list__card {
+                min-height: 1px;
+                position: relative;
+            }
+            .list__card__item {
+                padding: 6px 8px;
+                font-size: 13px;
+                box-shadow: 0 1px 0 #091e4240;
+                background-color: white;
+                border-radius: 3px;
+                position: relative;
+                .list__card__title {
+                    display: block;
+                    font-weight: 500;
+                }
+                .list__card__set {
+                    width: calc(100% + 16px);
+                    margin-left: -8px;
+                    padding: 10px;
+                    position: relative;
+                    background-color: white;
+                    textarea {
+                        width: 100%;
+                        background-color: transparent;
+                        resize: none;
+                        &:focus {
+                            box-shadow: unset !important;
+                        }
+                    }
+                    & > div {
+                        display: flex;
+                        align-items: center;
+                        i {
+                            margin-left: 10px;
+                            font-size: 1.4rem;
+                            cursor: pointer;
+                            color: #42526e;
+                        }
+                    }
+                }
+                .list__card__tag {
+                    width: 40px;
+                    height: 20px;
+                    border-radius: 50px;
+                    display: inline-block;
+                    background-color: #0c0f0a;
+                    &:nth-child(2n + 2) {
+                        margin: 0px 5px;
+                    }
+                    &:last-child {
+                        margin-right: 0px;
+                    }
+                }
+                &:hover button {
+                    opacity: 1;
+                    visibility: visible;
+                    transition: all 0.5s;
+                }
+                .list__card__detail {
+                    display: block;
+                    margin-top: 5px;
+                    color: #091e42;
+                    width: max-content;
+                }
+                & > button {
+                    position: absolute;
+                    top: 50%;
+                    right: 5px;
+                    transform: translateY(-50%);
+                    width: 24px;
+                    height: 24px;
+                    padding: 1px;
+                    border-radius: 5px;
+                    background-color: #f4f5f7;
+                    opacity: 0;
+                    visibility: hidden;
+                }
+                &:nth-child(2n + 2) {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+
+        .list__body {
+            padding: 10px 8px;
+            padding-top: 0px;
+
+            display: flex;
+            flex-direction: column;
+            .list__card__body {
+                display: none;
+                & > div {
+                    display: flex;
+                    align-items: center;
+                    i {
+                        margin-left: 10px;
+                        font-size: 1.4rem;
+                        cursor: pointer;
+                        color: #42526e;
+                    }
+                }
+                textarea {
+                    @include reset-input;
+                    border-radius: 3px;
+                    box-shadow: 0 1px 0 #091e4240;
+                    height: auto;
+                    width: 100%;
+                    padding: 7.5px 15px;
+                    font-weight: 400;
+                    &:focus {
+                        box-shadow: 0 1px 0 #091e4240 !important;
+                    }
+                }
+            }
+
+            .body__new__card {
+                display: flex;
+                align-items: center;
+                padding: 5px 10px;
+                border-radius: 5px;
+                &:hover {
+                    background-color: #091e4214;
+                    color: #172b4d;
+                }
+                i {
+                    color: #6b778c;
+                    margin-right: 5px;
+                }
+                span {
+                    color: #5e6c84;
+                    user-select: none;
+                    font-size: 15px;
+                }
+            }
+        }
+        .list__head {
+            flex: 0 0 auto;
+            min-height: 20px;
+            padding: 10px 8px;
+            padding-bottom: 0px;
+            position: relative;
+            padding-right: 10px;
+            display: flex;
+            align-items: center;
+            & > div:last-child {
+                margin-left: auto;
+            }
+            & > div:first-child {
+                & > textarea[data-disabled] {
+                    box-shadow: none !important;
+                    pointer-events: none;
+                }
+            }
+            textarea,
+            h2 {
+                line-height: 20px;
+                color: #172b4d;
+                font-size: 14px;
+                resize: none;
+                background: #0000;
+                border-radius: 3px;
+                box-shadow: none;
+                font-weight: 400;
+                height: 20px;
+                margin: -4px 0;
+                max-height: 256px;
+                min-height: 20px;
+                padding: 4px 8px;
+                overflow-wrap: break-word;
+                overflow: hidden;
+                cursor: pointer;
+                text-decoration: none !important;
+                height: 28px;
+            }
+            textarea {
+                @include reset-input;
+            }
+        }
+    }
+
+    .list__item__holder {
+        width: calc($listWidth - 5px);
+        border-radius: 5px;
+        margin-left: auto;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        background-color: rgba(1, 1, 1, 0.2);
+        height: 46px;
+    }
+}

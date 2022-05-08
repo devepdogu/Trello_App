@@ -1,0 +1,21 @@
+.info__comment,
+.info__tags {
+    margin-top: 40px;
+}
+.tag__con{
+    margin-top: 10px;
+    span{
+        padding:2.5px 7.5px;
+        &:nth-child(2n+2){
+            margin:0px 5px;
+        }
+        background-color: #0c0f0a;
+        i{
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        &:last-child{
+            margin-right: 0px;
+        }
+    }
+}

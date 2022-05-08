@@ -1,0 +1,53 @@
+@import "variable";
+
+body {
+    font-family: $activeFont !important;
+    background-color: $bgColor !important;
+}
+
+.app__header {
+    background-color: rgba($color: #000000, $alpha: 0.16);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    max-height: 68px;
+    h1 {
+        color: white;
+        font-weight: 200;
+        letter-spacing: 0.9px;
+        font-size: 1.5rem;
+    }
+    & > .app__header__right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        .app__header__search {
+            position: relative;
+            i {
+                position: absolute;
+                top: 50%;
+                left: 7.5px;
+                font-size: 0.9rem;
+                opacity: 0.9;
+                transform: translateY(-50%);
+                color: white;
+            }
+            input {
+                @include reset-input;
+                background-color: #ffffff3d;
+                border-radius: 5px;
+                border: 1px solid #ffffff3d;
+                padding: 5px 20px;
+                padding-left: 30px;
+                margin-right: 20px;
+                color: white;
+                font-weight: 300;
+                font-size: 0.9rem;
+                &::placeholder {
+                    color: white;
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+}
