@@ -84,7 +84,6 @@ export default function Info({ onClose, isOpen, _item, cart }) {
                 return e
             })
         })
-        console.log(items, _item.id)
     }
     const handleAddTag = (e) => {
         if (e.key === "Enter") {

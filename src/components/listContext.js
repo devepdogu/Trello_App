@@ -1,17 +1,14 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 
 const listContext = createContext()
 
 function ListProvider({ children }) {
-    const getItems = (count) => Array.from({ length: count }, (v, k) => k).map(k => ({
-        id: `item-${k}`,
-        title: `item ${k}`,
-        bgColor: "default"
-    }));
 
-
-    const [items, setItems] = useState(getItems(2))
-
+    const __storage = JSON.parse(localStorage.getItem('items')) ?? []
+    const [items, setItems] = useState(__storage)
+    useEffect(() => {
+        localStorage.setItem('items', JSON.stringify(items))
+    }, [items])
 
     const value = {
         items,
