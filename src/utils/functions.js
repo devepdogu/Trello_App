@@ -16,6 +16,7 @@ const uniqid = (length) => {
     return retVal;
 }
 
-module.exports = {
-    reorder, uniqid
-}
+export {
+    reorder,
+    uniqid
+};

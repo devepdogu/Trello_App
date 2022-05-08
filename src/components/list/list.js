@@ -44,7 +44,7 @@ export default function List() {
             text.focus()
             return;
         }
-        setItems((prev) => [...prev, { id: uniqid(10), title: text.attr("data-value"), bgColor: "default" }])
+        setItems((prev) => [...prev, { id: uniqid(10), title: text.attr("data-value"), bgColor: "default", createdTime: Math.floor(new Date().getTime() / 1000), isFilteredShowen: true }])
         text.val("")
         $(e.target).parents('.new__list__body').fadeOut(0).prev().slideDown(0)
     }
@@ -207,7 +207,7 @@ export default function List() {
                                 className={"droppable__wrap"}
                                 {...provided.droppableProps}
                             >
-                                {items.length > 0 && items.map((item, index) => (
+                                {items.length > 0 && items.filter((e) => e.isFilteredShowen).map((item, index) => (
                                     <Draggable
                                         key={item.id}
                                         draggableId={item.id}

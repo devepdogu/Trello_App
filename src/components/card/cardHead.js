@@ -18,8 +18,6 @@ export default function CardHead({ _provided, _item, cart }) {
     });
 
     const handleSetCard = (e) => {
-        // $(e.target).fadeOut(0)
-        // $(e.target).parent().find('.list__card__set').fadeIn(0).removeAttr('hidden')
         let $div = $(e.target);
         if ($(e.target).prop('tagName').toLowerCase() !== "i" && $(e.target).prop('tagName').toLowerCase() !== "textarea" && $(e.target).prop('tagName').toLowerCase() !== "button") {
             if ($(e.target).prop('tagName').toLowerCase() === "span")

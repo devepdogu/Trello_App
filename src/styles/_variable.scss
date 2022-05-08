@@ -18,6 +18,11 @@ $listWidth: 272px;
     resize: none;
 }
 
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
 textarea,
 input {
     @include reset-input;
@@ -69,5 +74,4 @@ button:is(:hover, :active, :focus) {
 
 .css-1kc7s1q {
     margin-top: 10px;
-    background-color: #0c0f0a !important;
 }
