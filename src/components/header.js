@@ -5,8 +5,12 @@ import {
     MenuItem,
 } from '@chakra-ui/react'
 
-export default function Header() {
+import React, { useContext, useEffect, useState } from 'react';
+import { listContext } from './listContext';
 
+export default function Header() {
+    const { items, setItems } = useContext(listContext)
+    
     return (
         <div className="app__header">
             <h1>Trello APP</h1>

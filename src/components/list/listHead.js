@@ -1,4 +1,4 @@
-import '../../styles/list.scss'
+import './../../styles/list.scss'
 import {
     Menu,
     MenuButton,

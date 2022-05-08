@@ -1,15 +1,15 @@
-import { reorder, uniqid } from '../../utils/functions';
+import { reorder, uniqid } from './../../utils/functions';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import React, { useContext } from 'react';
-import { listContext } from '../listContext';
+import { listContext } from './../listContext';
 import $ from 'jquery'
-import useDisclosure from '../../hooks/useDisclosure';
-import '../../styles/list.scss'
-import Options from '../options';
-import { colors } from '../data';
-import Card from '../card/card';
+import useDisclosure from './../../hooks/useDisclosure';
+import './../../styles/list.scss'
+import Options from './../options';
+import { colors } from './../data';
+import Card from './../card/card';
 import NewList from './newList';
-import NewCard from '../card/newCard';
+import NewCard from './../card/newCard';
 import ListHead from './listHead';
 
 export default function List() {

@@ -1,13 +1,13 @@
-import '../../styles/list.scss'
+import './../../styles/list.scss'
 import useDisclosure from '../../hooks/useDisclosure'
 import Info from './info'
 import {
     Tooltip
 } from '@chakra-ui/react'
-import { colors } from '../data'
+import { colors } from './../data'
 import $ from 'jquery'
 import React, { useContext, useEffect, useState } from 'react';
-import { listContext } from '../listContext';
+import { listContext } from './../listContext';
 export default function CardHead({ _provided, _item, cart }) {
     const { items, setItems } = useContext(listContext)
     const { isOpen, onClose, setOptionOpen, openedId } = useDisclosure()

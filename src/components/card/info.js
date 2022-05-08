@@ -12,22 +12,13 @@ import {
     Tag,
     Input,
     TagLabel, TagCloseButton, Tooltip,
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    PopoverHeader,
-    PopoverBody,
-
-    PopoverArrow,
-    PopoverCloseButton,
-
 } from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react';
-import { listContext } from '../listContext';
-import style from '../../styles/info.module.scss'
-import Colors from '../colors'
+import { listContext } from './../listContext';
+import style from './../../styles/info.module.scss'
+import Colors from './../colors'
 import $ from 'jquery'
-import { uniqid } from '../../utils/functions';
+import { uniqid } from './../../utils/functions';
 export default function Info({ onClose, isOpen, _item, cart }) {
     const { items, setItems } = useContext(listContext)
     const [activeColor, setActiveColor] = useState(_item?.bgColor ?? "default")

@@ -1,4 +1,4 @@
-import '../../styles/list.scss'
+import './../../styles/list.scss'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import CardHead from './cardHead';
 export default function Card({ item }) {

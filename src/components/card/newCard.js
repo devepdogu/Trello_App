@@ -1,4 +1,4 @@
-import '../../styles/list.scss'
+import './../../styles/list.scss'
 import $ from 'jquery'
 export default function NewCard({ handleCloseNewCard, handleNewCard, handleAddInsertCard, item }) {
     return <>
